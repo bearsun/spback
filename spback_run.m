@@ -31,7 +31,7 @@ black = [0 0 0];
 white = [255 255 255];
 tarsize = 100;
 mtrect = [0 0 tarsize tarsize];
-fixrect = CenterRectOnPoint([0 0 50 50], vrect(3)/2, vrect(4)/2);
+fixrect = CenterRectOnPoint([0 0 10 10], vrect(3)/2, vrect(4)/2);
 
 fprintf(outfile, ...
     '%s\t %s\t %s\t %s\t %s\t %s\t %s\n', ...
@@ -122,6 +122,8 @@ for iblock = 1:nblocks
 end
 
 fclose(outfile);
+sca;
+
 ntotal = nblocks*ntrials;
 npos = sum(sum(mhit));
 nneg = ntotal - npos;

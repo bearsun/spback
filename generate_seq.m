@@ -30,7 +30,9 @@ end
     function [seq, seqhit] = two_back(ntrials, ntars, vlocs, seed)
         % 2-back
         rng(seed);
-        seqhit = logical([0; 0;  Shuffle([zeros(ntrials-ntars-2, 1); ones(ntars, 1)])]);
+        hit1 = logical([0; 0;  Shuffle([zeros(ntrials/2-ntars/2-2, 1); ones(ntars/2, 1)])]);
+        hit2 = logical(Shuffle([zeros(ntrials/2-ntars/2, 1); ones(ntars/2, 1)]));
+        seqhit = [hit1; hit2];
         
         seq = BalanceTrials(ntrials, 1, vlocs);
         seq = seq(1:ntrials);
@@ -40,7 +42,9 @@ end
     function [seq, seqhit] = one_back(ntrials, ntars, vlocs, seed)
         % 1-back
         rng(seed);
-        seqhit = logical([0; Shuffle([zeros(ntrials-ntars-1, 1); ones(ntars, 1)])]);
+        hit1 = logical([0; Shuffle([zeros(ntrials/2-ntars/2-1, 1); ones(ntars/2, 1)])]);
+        hit2 = logical(Shuffle([zeros(ntrials/2-ntars/2, 1); ones(ntars/2, 1)]));
+        seqhit = [hit1; hit2];
         
         seq = BalanceTrials(ntrials, 1, vlocs);
         seq = seq(1:ntrials);
